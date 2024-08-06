@@ -1,8 +1,5 @@
-use std::io::BufRead;
-use syntect::easy::HighlightFile;
-use syntect::highlighting::{Style, ThemeSet};
-use syntect::parsing::{ParseState, ScopeStack, SyntaxSet};
-use syntect::util::as_24_bit_terminal_escaped;
+use syntect::highlighting::ThemeSet;
+use syntect::parsing::{ParseState, Scope, ScopeStack, SyntaxSet};
 
 fn main() {
     let ss = SyntaxSet::load_from_folder(".").unwrap();
@@ -16,23 +13,21 @@ fn main() {
 
     let result = parser.parse_line(input, &ss).unwrap();
 
-    // println!("{:?}", result);
-
     let mut stack = ScopeStack::new();
-    // println!("{:?}", stack);
 
     let mut prev = 0;
+    let mut current = Scope::new("").unwrap();
 
     for (next, op) in result {
-        // println!("{:?} {:?}", next, op);
-
         stack.apply(&op).unwrap();
 
         let scope = stack.scopes.last().unwrap();
 
-        println!("{}", scope.build_string());
+        println!("{}", current.build_string());
 
         println!("{}", &input[prev..next]);
         prev = next;
+
+        current = *scope;
     }
 }
