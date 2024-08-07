@@ -1,0 +1,29 @@
+%YAML 1.2
+---
+name: Technique
+file_extensions: [t]
+scope: source.technique
+
+contexts:
+    main:
+        - match: '->'
+          scope: keyword.operator
+        - match: '^(\w+) *(:)'
+          captures:
+            1: entity.name.function.technique
+            2: keyword.operator
+          push: function
+
+    function:
+        - meta_scope: meta.function
+        - match: '(\w+) (->) (\w+)'
+          captures:
+            1: entity.name.type.technique
+            2: keyword.operator
+            3: entity.name.type.technique
+        - include: bail-out
+    
+    bail-out:
+        - match: '(?=\S)'
+          pop: true
+
