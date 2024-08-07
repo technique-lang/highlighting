@@ -29,9 +29,7 @@ fn main() -> Result<()> {
             .last()
             .expect("No scope on stack?!?");
 
-        println!("{}", current.build_string());
-
-        println!("{}", &input[prev..next]);
+        println!("{:35.35} {}", current.build_string(), &input[prev..next]);
         prev = next;
 
         current = *scope;
