@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>name</key>
-    <string>Example Color Scheme</string>
+    <string>A color acheme for Technique procedures</string>
     <key>settings</key>
     <array>
         <!-- Global settings -->
@@ -11,9 +11,9 @@
             <key>settings</key>
             <dict>
                 <key>background</key>
-                <string>#222222</string>
+                <string>#eeeeec</string>
                 <key>foreground</key>
-                <string>#EEEEEE</string>
+                <string>#555753</string>
                 <key>caret</key>
                 <string>#FFFFFF</string>
             </dict>
@@ -58,7 +58,7 @@
             <key>name</key>
             <string>Function</string>
             <key>scope</key>
-            <string>meta.function</string>
+            <string>entity.name.function</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>

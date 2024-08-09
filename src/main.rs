@@ -5,11 +5,14 @@ use syntect::util::as_24_bit_terminal_escaped;
 
 fn main() -> Result<()> {
     let ss = SyntaxSet::load_from_folder(".")?;
-    let ts = ThemeSet::load_defaults();
 
     let syn = ss
         .find_syntax_by_name("Technique")
         .context("Syntax for Technique not found")?;
+
+    // retrieve the appropriate ANSI syntax highlighting configuration
+    let theme = ThemeSet::get_theme("technique.tmTheme").expect("Theme file not found");
+    let highlighter = Highlighter::new(&theme);
 
     let mut parser = ParseState::new(syn);
 
@@ -22,6 +25,7 @@ fn main() -> Result<()> {
     let mut prev = 0;
     let mut current = Scope::new("")?;
 
+    println!("\x1b[30;107m");
     for (next, op) in result {
         stack.apply(&op)?;
 
@@ -30,25 +34,18 @@ fn main() -> Result<()> {
             .last()
             .expect("No scope on stack?!?");
 
-        // retrieve the appropriate ANSI syntax highlighting for the scope
-
-        let theme = ts
-            .themes
-            .get("Solarized (dark)")
-            .expect("Theme not found");
-
-        let highlighter = Highlighter::new(theme);
-
         let text = &input[prev..next];
 
         let style = highlighter.style_for_stack(std::slice::from_ref(&current));
 
         let output = as_24_bit_terminal_escaped(&[(style, text)], true);
 
-        println!("{:35.35} {}\x1b[0m", current.build_string(), output);
+        println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
         prev = next;
 
         current = *scope;
     }
+
+    println!("\x1b[0m");
     Ok(())
 }
