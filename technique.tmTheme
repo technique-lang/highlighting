@@ -63,28 +63,60 @@
             <dict>
                 <key>foreground</key>
                 <string>#3465a4</string>
+                <key>fontStyle</key>
+                <string>bold</string>
             </dict>
         </dict>
         <dict>
             <key>name</key>
             <string>Function</string>
+            <key>scope</key>
+            <string>variable.function</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#729fcf</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Operator</string>
             <key>scope</key>
             <string>keyword.operator</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
                 <string>#555753</string>
+                <key>fontStyle</key>
+                <string>bold</string>
             </dict>
         </dict>
         <dict>
             <key>name</key>
-            <string>Function</string>
+            <string>Punctuation</string>
+            <key>scope</key>
+            <string>punctuation.definition.generic</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Type</string>
             <key>scope</key>
             <string>entity.name.type.technique</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
                 <string>#8f5902</string>
+                <key>fontStyle</key>
+                <string>bold</string>
             </dict>
         </dict>
     </array>
