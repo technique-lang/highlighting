@@ -17,35 +17,39 @@ fn main() -> Result<()> {
     let mut parser = ParseState::new(syn);
 
     let input = "hello : World -> Planet";
+    // let input = "Local network connectivity <local_network>";
 
-    let result = parser.parse_line(input, &ss)?;
+    let lines = input.lines();
 
     let mut stack = ScopeStack::new();
 
-    let mut prev = 0;
-    let mut current = Scope::new("")?;
+    for line in lines {
+        let result = parser.parse_line(line, &ss)?;
 
-    println!("\x1b[30;107m");
-    for (next, op) in result {
-        stack.apply(&op)?;
+        let mut prev = 0;
+        let mut current = Scope::new("")?;
 
-        let scope = stack
-            .scopes
-            .last()
-            .expect("No scope on stack?!?");
+        println!("\x1b[30;107m");
+        for (next, op) in result {
+            stack.apply(&op)?;
 
-        let text = &input[prev..next];
+            let scope = stack
+                .scopes
+                .last()
+                .expect("No scope on stack?!?");
 
-        let style = highlighter.style_for_stack(std::slice::from_ref(&current));
+            let text = &input[prev..next];
 
-        let output = as_24_bit_terminal_escaped(&[(style, text)], true);
+            let style = highlighter.style_for_stack(std::slice::from_ref(&current));
 
-        println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
-        prev = next;
+            let output = as_24_bit_terminal_escaped(&[(style, text)], true);
 
-        current = *scope;
+            println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
+            prev = next;
+
+            current = *scope;
+        }
     }
-
     println!("\x1b[0m");
     Ok(())
 }
