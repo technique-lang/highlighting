@@ -22,11 +22,18 @@ contexts:
 
     function:
         - meta_scope: meta.function
-        - match: ' ?([\w, ]+) (->) (\w+)'
+        - match: ' ?(\w+) (->) (\w+)'
           captures:
               1: entity.name.type.technique
               2: keyword.operator
               3: entity.name.type.technique
+        - match: ' ?(\w+)(,) ?(\w+) (->) (\w+)'
+          captures:
+              1: entity.name.type.technique
+              2: keyword.operator
+              3: entity.name.type.technique
+              4: keyword.operator
+              5: entity.name.type.technique
         - include: bail-out
 
     bail-out:
