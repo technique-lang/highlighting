@@ -37,7 +37,7 @@ fn main() -> Result<()> {
                 .last()
                 .expect("No scope on stack?!?");
 
-            let text = &input[prev..next];
+            let text = &line[prev..next];
 
             let style = highlighter.style_for_stack(std::slice::from_ref(&current));
 
