@@ -16,8 +16,7 @@ fn main() -> Result<()> {
 
     let mut parser = ParseState::new(syn);
 
-    let input = "hello : World -> Planet";
-    // let input = "Local network connectivity <local_network>";
+    let input = std::fs::read_to_string("Example.t").context("Failed to read example Technique file")?;
 
     let lines = input.lines();
 
