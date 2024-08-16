@@ -43,8 +43,12 @@ fn main() -> Result<()> {
 
             let output = as_24_bit_terminal_escaped(&[(style, text)], true);
 
-            println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
-            prev = next;
+            if next == prev {
+                // skip printing scope if width is 0
+            } else {
+                println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
+                prev = next;
+            }
 
             current = *scope;
         }
