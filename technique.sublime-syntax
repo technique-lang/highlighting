@@ -6,19 +6,69 @@ scope: source.technique
 
 contexts:
     main:
-        - match: '->'
-          scope: keyword.operator
+        # skip blank lines
+        - match: '^\s*$'
+
+
+        #
+        - match: '^% technique v1'
+          scope: entity.name.namespace.technique
+
+        - match: '^!.*$'
+          scope: entity.name.namespace.technique
+
         - match: '^(\w+) *(:)'
           captures:
               1: entity.name.function.technique
               2: keyword.operator
           push: function
+
+        - match: '^\s*([IVXLCMD]+\.) *'
+          captures:
+              1: markup.list.numbered.technique
+
+        - match: '^\s*(\d+\.)*'
+          captures:
+              1: markup.list.numbered.technique
+
+        - match: '^\s*(#.*)$'
+          captures:
+              1: markup.heading.technique
+
+        - match: '^(\w.*)$'
+          captures:
+              1: string
+
+        - match: '(foreach)\s'
+          captures:
+              1: keyword.control.technique
+
+        - match: '(in)\s'
+          captures:
+              1: keyword.control.technique
+
+        - match: '(repeat)\s'
+          captures:
+              1: keyword.control.technique
+
+        - match: '(\w+)\('
+          captures:
+              1: variable.language.technique
+
+        - match: '->'
+          scope: keyword.operator
         - match: '(<)(\w+)(>)'
           captures:
               1: punctuation.definition.generic
-              2: variable.function
+              2: variable.function.technique
               3: punctuation.definition.generic
+        - match: '(\w+)([=]+)'
+          captures:
+              1: string
+              2: string
 
+        - match: \'.+\'
+          scope: entity.name.constant.technique
 
     function:
         - meta_scope: meta.function

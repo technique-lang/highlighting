@@ -38,7 +38,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#FFD500</string>
+                <string>#555753</string>
             </dict>
         </dict>
         <dict>
@@ -56,7 +56,7 @@
         <!-- Custom scopes for Technique -->
         <dict>
             <key>name</key>
-            <string>Function</string>
+            <string>Procedure Definition</string>
             <key>scope</key>
             <string>entity.name.function</string>
             <key>settings</key>
@@ -69,13 +69,26 @@
         </dict>
         <dict>
             <key>name</key>
-            <string>Function</string>
+            <string>Procedure Call</string>
             <key>scope</key>
-            <string>variable.function</string>
+            <string>variable.function.technique</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
                 <string>#729fcf</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Function Call</string>
+            <key>scope</key>
+            <string>variable.language.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#06989a</string>
                 <key>fontStyle</key>
                 <string>bold</string>
             </dict>
@@ -117,6 +130,69 @@
                 <string>#8f5902</string>
                 <key>fontStyle</key>
                 <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Step</string>
+            <key>scope</key>
+            <string>markup.list.numbered.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#000000</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Title</string>
+            <key>scope</key>
+            <string>markup.heading.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#2e3436</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Sum Type</string>
+            <key>scope</key>
+            <string>entity.name.constant.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#4e9a06</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Keyword</string>
+            <key>scope</key>
+            <string>keyword.control.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#75507b</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Pragma</string>
+            <key>scope</key>
+            <string>entity.name.namespace.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#75507b</string>
+                <key>fontStyle</key>
+                <string></string>
             </dict>
         </dict>
     </array>
