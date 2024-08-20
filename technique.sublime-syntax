@@ -20,26 +20,38 @@ contexts:
 
         # identify a procedure definition and stack the function context
 
-        - match: '^(\w+)(?:(\()([^,)]*)(?:(,)([^,)]*))*(\)))?\s*(:)'
+        # - match: '^(\w+)\s*(\()(?=.*(:))'
+        #   captures:
+        #         1: entity.name.function.technique
+        #         2: punctuation.definition.parameters.begin
+        #         3: punctuation.definition.function.technique
+
+
+        - match: '^(\w+)(?=.*:)'
           captures:
               1: entity.name.function.technique
-              2: punctuation.definition.parameters
-              3: variable.parameter
-              4: punctuation.definition.parameters
-              5: variable.parameter
-              6: punctuation.definition.parameters
-              7: keyword.operator
-          push: function
+          push:
+            - signature
+            - definition
+            - parameters
+          # include: bail-out
+          # push: function
 
         # top-level section declaration
 
-        - match: '^\s*([IVXLCMD]+\.) *'
+        - match: '^([IVXLCMD]+\.)'
           captures:
               1: markup.list.numbered.technique
 
         # individual steps within a procedure
 
-        - match: '^\s*(\d+\.)*'
+        - match: '^\s+(\d+\.)'
+          captures:
+              1: markup.list.numbered.technique
+
+        # individual sub-steps within a procedure
+
+        - match: '^\s+([a-z]\.)'
           captures:
               1: markup.list.numbered.technique
 
@@ -62,40 +74,65 @@ contexts:
           captures:
               1: keyword.control.technique
 
+        # built in function invocation
+
         - match: '(\w+)\('
           captures:
               1: variable.language.technique
 
-        - match: '->'
-          scope: keyword.operator
+        # procedure call
+
         - match: '(<)(\w+)(>)'
           captures:
-              1: punctuation.definition.generic
+              1: punctuation.definition.generic.begin
               2: variable.function.technique
-              3: punctuation.definition.generic
-        - match: '(\w+)([=]+)'
-          captures:
-              1: string
-              2: string
+              3: punctuation.definition.generic.end
+          push:
+              - parameters
 
         - match: \'.+\'
           scope: entity.name.constant.technique
 
-    function:
-        - meta_scope: meta.function
-        - match: ' ?(\w+) (->) (\w+)'
-          captures:
-              1: entity.name.type.technique
-              2: keyword.operator
-              3: entity.name.type.technique
-        - match: ' ?(\w+)(,) ?(\w+) (->) (\w+)'
-          captures:
-              1: entity.name.type.technique
-              2: keyword.operator
-              3: entity.name.type.technique
-              4: keyword.operator
-              5: entity.name.type.technique
-        - include: bail-out
+    parameters:
+        - meta_scope: meta.parameters.technique
+
+        - match: '\('
+          scope: punctuation.definition.parameters.begin
+        
+        - match: '\)'
+          scope: punctuation.definition.parameters.end
+          pop: true
+        
+        - match: ','
+          scope: punctuation.separator.parameters
+        
+        - match: '\w+'
+          scope: variable.parameter.technique
+
+        - match: '(?=[:~])'
+          pop: true
+        
+        - match: '$'
+          pop: true
+
+    definition:
+        - match: ':'
+          scope: punctuation.definition.function.technique
+          pop: true
+
+    signature:
+        - meta_scope: meta.type.technique
+        - match: '$'
+          pop: true
+
+        - match: ','
+          scope: punctuation.separator.parameters
+
+        - match: '\w+'
+          scope: entity.name.type.technique
+
+        - match: '->'
+          scope: keyword.operator
 
     bail-out:
         - match: '(?=\S)'
