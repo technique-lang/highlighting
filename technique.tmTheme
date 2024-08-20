@@ -102,6 +102,17 @@
             <dict>
                 <key>foreground</key>
                 <string>#555753</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Punctuation</string>
+            <key>scope</key>
+            <string>punctuation.definition.generic</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
                 <key>fontStyle</key>
                 <string>bold</string>
             </dict>
@@ -110,7 +121,7 @@
             <key>name</key>
             <string>Punctuation</string>
             <key>scope</key>
-            <string>punctuation.definition.generic</string>
+            <string>punctuation.definition.parameters</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>

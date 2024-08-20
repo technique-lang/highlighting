@@ -7,37 +7,48 @@ scope: source.technique
 contexts:
     main:
         # skip blank lines
+
         - match: '^\s*$'
 
+        # magic version string and top-level metadata
 
-        #
         - match: '^% technique v1'
           scope: entity.name.namespace.technique
 
         - match: '^!.*$'
           scope: entity.name.namespace.technique
 
-        - match: '^(\w+) *(:)'
+        # identify a procedure definition and stack the function context
+
+        - match: '^(\w+)(?:(\()([^,)]*)(?:(,)([^,)]*))*(\)))?\s*(:)'
           captures:
               1: entity.name.function.technique
-              2: keyword.operator
+              2: punctuation.definition.parameters
+              3: variable.parameter
+              4: punctuation.definition.parameters
+              5: variable.parameter
+              6: punctuation.definition.parameters
+              7: keyword.operator
           push: function
+
+        # top-level section declaration
 
         - match: '^\s*([IVXLCMD]+\.) *'
           captures:
               1: markup.list.numbered.technique
 
+        # individual steps within a procedure
+
         - match: '^\s*(\d+\.)*'
           captures:
               1: markup.list.numbered.technique
 
-        - match: '^\s*(#.*)$'
-          captures:
-              1: markup.heading.technique
+        # procedure title if present
 
-        - match: '^(\w.*)$'
+        - match: '^(#)\s*(.*)$'
           captures:
-              1: string
+              1: punctuation.definition.generic
+              2: markup.heading.technique
 
         - match: '(foreach)\s'
           captures:
