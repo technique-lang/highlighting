@@ -20,13 +20,6 @@ contexts:
 
         # identify a procedure definition and stack the function context
 
-        # - match: '^(\w+)\s*(\()(?=.*(:))'
-        #   captures:
-        #         1: entity.name.function.technique
-        #         2: punctuation.definition.parameters.begin
-        #         3: punctuation.definition.function.technique
-
-
         - match: '^(\w+)(?=.*:)'
           captures:
               1: entity.name.function.technique
