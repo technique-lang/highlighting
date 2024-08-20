@@ -89,7 +89,7 @@ contexts:
 
         # Sum type
 
-        - match: \'\w+\'
+        - match: (\')(?:\w(?:[\w\s]*\w)*\')
           scope: entity.name.constant.technique
 
     parameters:
