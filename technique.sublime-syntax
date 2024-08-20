@@ -87,7 +87,9 @@ contexts:
           push:
               - parameters
 
-        - match: \'.+\'
+        # Sum type
+
+        - match: \'\w+\'
           scope: entity.name.constant.technique
 
     parameters:
