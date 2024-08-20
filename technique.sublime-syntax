@@ -48,6 +48,10 @@ contexts:
           captures:
               1: markup.list.numbered.technique
 
+        - match: '^\s+(?=@\w+)'
+          push:
+            - role
+
         # procedure title if present
 
         - match: '^(#)\s*(.*)$'
@@ -67,7 +71,7 @@ contexts:
           captures:
               1: keyword.control.technique
 
-        # built in function invocation
+        # built-in function invocation
 
         - match: '(\w+)\('
           captures:
@@ -126,6 +130,17 @@ contexts:
 
         - match: '->'
           scope: keyword.operator
+
+    role:
+        - meta_scope: meta.trait
+        - match: '@\w+'
+          scope: entity.name.trait
+
+        - match: '\+'
+          scope: keyword.operator
+
+        - match: '$'
+          pop: true
 
     bail-out:
         - match: '(?=\S)'
