@@ -119,13 +119,52 @@
         </dict>
         <dict>
             <key>name</key>
-            <string>Punctuation</string>
+            <string>Parameter Enclosing Punctuation</string>
             <key>scope</key>
             <string>punctuation.definition.parameters</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
                 <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Inter-Parameter Punctuation</string>
+            <key>scope</key>
+            <string>punctuation.separator.parameters</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Parameter Name</string>
+            <key>scope</key>
+            <string>variable.parameter.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#333366</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Procedure Definition Mark</string>
+            <key>scope</key>
+            <string>punctuation.definition.function.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#00aaff</string>
                 <key>fontStyle</key>
                 <string>bold</string>
             </dict>
