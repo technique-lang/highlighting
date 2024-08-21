@@ -282,6 +282,19 @@
             <key>name</key>
             <string>Title</string>
             <key>scope</key>
+            <string>punctuation.definition.heading.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#75507b</string>
+                <key>fontStyle</key>
+                <string></string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Title</string>
+            <key>scope</key>
             <string>markup.heading.technique</string>
             <key>settings</key>
             <dict>

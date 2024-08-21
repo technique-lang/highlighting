@@ -67,7 +67,7 @@ contexts:
 
         - match: '^(#)\s*(.*)$'
           captures:
-              1: punctuation.definition.generic
+              1: punctuation.definition.heading.technique
               2: markup.heading.technique
 
         # procedure call
