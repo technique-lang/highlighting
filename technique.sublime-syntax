@@ -157,6 +157,9 @@ contexts:
         - match: '\w+'
           scope: entity.name.type.technique
 
+        - match: '\(\)'
+          scope: entity.name.type.technique
+
         - match: '->'
           scope: keyword.operator
 
