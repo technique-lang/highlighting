@@ -267,6 +267,19 @@
         </dict>
         <dict>
             <key>name</key>
+            <string>Step</string>
+            <key>scope</key>
+            <string>markup.list.unnumbered.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#000000</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
             <string>Title</string>
             <key>scope</key>
             <string>markup.heading.technique</string>
@@ -297,6 +310,19 @@
             <string>Sum Type Alternative Mark</string>
             <key>scope</key>
             <string>punctuation.separator.constant.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Binding Marker</string>
+            <key>scope</key>
+            <string>keyword.operator.assignment</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>

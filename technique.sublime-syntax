@@ -48,6 +48,17 @@ contexts:
           captures:
               1: markup.list.numbered.technique
 
+        # individual tasks within a procedure
+
+        - match: '^\s+(\-)'
+          captures:
+              1: markup.list.unnumbered.technique
+
+        - match: '(~)\s*([a-z]\w*)'
+          captures:
+              1: keyword.operator.assignment
+              2: variable.parameter.technique
+
         - match: '^\s+(?=@\w+)'
           push:
             - role
