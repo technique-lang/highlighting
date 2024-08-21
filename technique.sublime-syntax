@@ -70,39 +70,16 @@ contexts:
               1: punctuation.definition.generic
               2: markup.heading.technique
 
-        - match: '(foreach)\s'
-          captures:
-              1: keyword.control.technique
-
-        - match: '(in)\s'
-          captures:
-              1: keyword.control.technique
-
-        - match: '(repeat)\s'
-          captures:
-              1: keyword.control.technique
-
-        # built-in function invocation
-
-        - match: '([a-z]\w*)(?=\()(?!:)'
-          captures:
-              1: support.function.technique
-          push: embedded
-
         # procedure call
 
-        - match: '(<)([a-z]\w*)(>)'
-          captures:
-              1: punctuation.definition.generic.begin
-              2: variable.function.technique
-              3: punctuation.definition.generic.end
-          push:
-              - parameters
+        - include: procedure-call
 
         # Sum type
 
         - match: (\')(?:\w(?:[\w\s]*\w)*\')
           scope: entity.name.constant.technique
+
+        # List
 
         - match: '\['
           scope: punctuation.section.brackets.begin
@@ -110,15 +87,23 @@ contexts:
         - match: '\]'
           scope: punctuation.section.brackets.end
 
+        # Code block
+
         - match: '{'
           scope: punctuation.section.braces.begin
-
-        - match: '}'
-          scope: punctuation.section.braces.end
+          push: code-block
 
         - match: '\s*\|'
           scope: punctuation.separator.constant.technique
 
+    procedure-call:
+        - match: '(<)([a-z]\w*)(>)'
+          captures:
+              1: punctuation.definition.generic.begin
+              2: variable.function.technique
+              3: punctuation.definition.generic.end
+          push:
+              - parameters
     parameters:
         - meta_scope: meta.parameters.technique
 
@@ -173,6 +158,39 @@ contexts:
 
         - match: '$'
           pop: true
+
+    code-block:
+        - meta_scope: meta.block
+
+        - match: '}'
+          scope: punctuation.section.braces.end
+          pop: true
+
+        - include: procedure-call
+
+        - match: '(foreach)\s'
+          captures:
+              1: keyword.control.technique
+
+        - match: '(in)\s'
+          captures:
+              1: keyword.control.technique
+
+        - match: '(repeat)\s'
+          captures:
+              1: keyword.control.technique
+
+        # built-in function invocation
+
+        - match: '([a-z]\w*)(?=\()(?!:)'
+          captures:
+              1: support.function.technique
+          push: embedded
+
+        # remaining identifiers are variables
+
+        - match: '[a-z]\w*'
+          scope: variable.parameter.technique
 
     embedded:
         - meta_scope: meta.embedded.technique
