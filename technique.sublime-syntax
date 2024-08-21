@@ -92,6 +92,21 @@ contexts:
         - match: (\')(?:\w(?:[\w\s]*\w)*\')
           scope: entity.name.constant.technique
 
+        - match: '\['
+          scope: punctuation.section.brackets.begin
+
+        - match: '\]'
+          scope: punctuation.section.brackets.end
+
+        - match: '{'
+          scope: punctuation.section.braces.begin
+
+        - match: '}'
+          scope: punctuation.section.braces.end
+
+        - match: '\s*\|'
+          scope: punctuation.separator.constant.technique
+
     parameters:
         - meta_scope: meta.parameters.technique
 

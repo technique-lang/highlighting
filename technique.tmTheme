@@ -53,6 +53,33 @@
             </dict>
         </dict>
 
+        <!-- Structural scopes -->
+        <dict>
+            <key>name</key>
+            <string>Code Block</string>
+            <key>scope</key>
+            <string>punctuation.section.braces</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Item List</string>
+            <key>scope</key>
+            <string>punctuation.section.brackets</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
         <!-- Custom scopes for Technique -->
         <dict>
             <key>name</key>
@@ -121,13 +148,15 @@
         </dict>
         <dict>
             <key>name</key>
-            <string>Punctuation</string>
+            <string>Procedure Invocation Enclosing Punctuation</string>
             <key>scope</key>
             <string>punctuation.definition.generic</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#75507b</string>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
             </dict>
         </dict>
         <dict>
@@ -234,6 +263,21 @@
                 <string>bold</string>
             </dict>
         </dict>
+
+        <dict>
+            <key>name</key>
+            <string>Sum Type Alternative Mark</string>
+            <key>scope</key>
+            <string>punctuation.separator.constant.technique</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+
         <dict>
             <key>name</key>
             <string>Keyword</string>
