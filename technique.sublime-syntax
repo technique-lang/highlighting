@@ -20,7 +20,7 @@ contexts:
 
         # identify a procedure definition and stack the function context
 
-        - match: '^(\w+)(?=.*:)'
+        - match: '^([a-z]\w+)(?=\s+:)'
           captures:
               1: entity.name.function.technique
           push:
@@ -73,13 +73,13 @@ contexts:
 
         # built-in function invocation
 
-        - match: '(\w+)\('
+        - match: '([a-z]\w+)\('
           captures:
               1: variable.language.technique
 
         # procedure call
 
-        - match: '(<)(\w+)(>)'
+        - match: '(<)([a-z]\w+)(>)'
           captures:
               1: punctuation.definition.generic.begin
               2: variable.function.technique
