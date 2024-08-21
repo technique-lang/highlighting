@@ -73,9 +73,10 @@ contexts:
 
         # built-in function invocation
 
-        - match: '([a-z]\w+)\('
+        - match: '([a-z]\w+)(?=\()'
           captures:
-              1: variable.language.technique
+              1: support.function.technique
+          push: embedded
 
         # procedure call
 
@@ -120,7 +121,7 @@ contexts:
         - match: ','
           scope: punctuation.separator.parameters
         
-        - match: '\w+'
+        - match: '[a-z]\w+'
           scope: variable.parameter.technique
 
         - match: '(?=\s*[:~}])'
@@ -158,6 +159,39 @@ contexts:
 
         - match: '$'
           pop: true
+
+    embedded:
+        - meta_scope: meta.embedded.technique
+
+        - match: '\('
+          scope: punctuation.definition.parameters.begin
+
+        - match: '\)'
+          scope: punctuation.definition.parameters.end
+          pop: true
+
+        - match: '(```)(\w+)'
+          captures:
+              1: punctuation.definition.string.begin
+              2: storage.type.embedded
+          push: embedded-string
+
+        - match: '(```)'
+          captures:
+              1: punctuation.definition.string.begin
+          push: embedded-string
+        # - match: '[^\)]*'
+        #   scope: string.quoted.other
+
+    embedded-string:
+        - meta_scope: meta.string
+
+        - match: '```'
+          scope: punctuation.definition.string.end
+          pop: true
+
+        - match: '[^`]+'
+          scope: string.quoted.triple
 
     bail-out:
         - match: '(?=\S)'

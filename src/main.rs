@@ -46,7 +46,7 @@ fn main() -> Result<()> {
             if next == prev {
                 // skip printing scope if width is 0
             } else {
-                println!("{:35.35} {}\x1b[30;107m", current.build_string(), output);
+                println!("{:40.40} {}\x1b[30;107m", current.build_string(), output);
                 prev = next;
             }
 

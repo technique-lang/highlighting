@@ -38,7 +38,22 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
+                <string>#4e9a06</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>String</string>
+            <key>scope</key>
+            <string>storage.type.embedded</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
                 <string>#555753</string>
+                <key>fontStyle</key>
+                <string>bold</string>
             </dict>
         </dict>
         <dict>
@@ -80,6 +95,19 @@
                 <string>bold</string>
             </dict>
         </dict>
+        <dict>
+            <key>name</key>
+            <string>Item List</string>
+            <key>scope</key>
+            <string>punctuation.definition.string</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#4e9a06</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
         <!-- Custom scopes for Technique -->
         <dict>
             <key>name</key>
@@ -111,7 +139,7 @@
             <key>name</key>
             <string>Function Call</string>
             <key>scope</key>
-            <string>variable.language.technique</string>
+            <string>support.function.technique</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
