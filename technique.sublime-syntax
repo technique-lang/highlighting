@@ -20,7 +20,7 @@ contexts:
 
         # identify a procedure definition and stack the function context
 
-        - match: '^([a-z]\w+)(?=\s+:)'
+        - match: '^([a-z]\w*)(?=(?:\([\w\s,]+\))?\s+:)'
           captures:
               1: entity.name.function.technique
           push:
@@ -73,14 +73,14 @@ contexts:
 
         # built-in function invocation
 
-        - match: '([a-z]\w+)(?=\()'
+        - match: '([a-z]\w*)(?=\()(?!:)'
           captures:
               1: support.function.technique
           push: embedded
 
         # procedure call
 
-        - match: '(<)([a-z]\w+)(>)'
+        - match: '(<)([a-z]\w*)(>)'
           captures:
               1: punctuation.definition.generic.begin
               2: variable.function.technique
@@ -121,7 +121,7 @@ contexts:
         - match: ','
           scope: punctuation.separator.parameters
         
-        - match: '[a-z]\w+'
+        - match: '[a-z]\w*'
           scope: variable.parameter.technique
 
         - match: '(?=\s*[:~}])'
