@@ -142,7 +142,7 @@ contexts:
           scope: entity.name.type.technique
 
         - match: '->'
-          scope: keyword.operator
+          scope: keyword.operator.function
 
     role:
         - meta_scope: meta.trait

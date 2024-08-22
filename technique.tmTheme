@@ -383,7 +383,19 @@
                 <string>bold</string>
             </dict>
         </dict>
-
+        <dict>
+            <key>name</key>
+            <string>Procedure Type Arrow</string>
+            <key>scope</key>
+            <string>keyword.operator.function</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
         <dict>
             <key>name</key>
             <string>Keyword</string>
