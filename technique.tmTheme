@@ -45,13 +45,39 @@
         </dict>
         <dict>
             <key>name</key>
+            <string>Numeric Constant</string>
+            <key>scope</key>
+            <string>constant.numeric</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#ad7fa8</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
             <string>String</string>
             <key>scope</key>
             <string>storage.type.embedded</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#555753</string>
+                <string>#e9b96e</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Procedure Call</string>
+            <key>scope</key>
+            <string>variable.other.tablet</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#06989a</string>
                 <key>fontStyle</key>
                 <string>bold</string>
             </dict>
@@ -97,13 +123,26 @@
         </dict>
         <dict>
             <key>name</key>
-            <string>Item List</string>
+            <string>String Quotes</string>
             <key>scope</key>
             <string>punctuation.definition.string</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#4e9a06</string>
+                <string>#999999</string>
+                <key>fontStyle</key>
+                <string>bold</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>Tablet Feild Quotes</string>
+            <key>scope</key>
+            <string>punctuation.definition.field</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#999999</string>
                 <key>fontStyle</key>
                 <string>bold</string>
             </dict>

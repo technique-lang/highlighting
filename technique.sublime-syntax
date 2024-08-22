@@ -79,14 +79,6 @@ contexts:
         - match: (\')(?:\w(?:[\w\s]*\w)*\')
           scope: entity.name.constant.technique
 
-        # List
-
-        - match: '\['
-          scope: punctuation.section.brackets.begin
-
-        - match: '\]'
-          scope: punctuation.section.brackets.end
-
         # Code block
 
         - match: '{'
@@ -187,10 +179,46 @@ contexts:
               1: support.function.technique
           push: embedded
 
+        # Handle a tablet if encountered
+
+        - match: '\['
+          scope: punctuation.section.brackets.start
+          push: tablet
+
         # remaining identifiers are variables
 
         - match: '[a-z]\w*'
           scope: variable.parameter.technique
+
+    tablet:
+        - meta_scope: meta.tablet.technique
+
+        - match: '\]'
+          scope: punctuation.section.brackets.end
+          pop: true
+
+        # an empty name is not a valid field but we want the highlighting to
+        # for the rest of the tablet when writing.
+        - match: '(\")([\w\d\s]*)(\")\s*(,)'
+          captures:
+              1: punctuation.definition.field.begin
+              2: variable.other.tablet
+              3: punctuation.definition.field.end
+              4: punctuation.separator.parameters
+          push: tablet-value
+
+    tablet-value:
+        - match: (\")([^\"]*)(\")
+          captures:
+              1: punctuation.definition.string.begin
+              2: string
+              3: punctuation.definition.string.end
+
+        - match: \d+
+          scope: constant.numeric
+
+        - match: '$'
+          pop: true
 
     embedded:
         - meta_scope: meta.embedded.technique
