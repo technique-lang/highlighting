@@ -219,6 +219,9 @@ contexts:
           scope: punctuation.section.brackets.start
           push: tablet
 
+        - match: '~(?=\s*[a-z]\w*)'
+          scope: keyword.operator.assignment
+
         - include: values
 
     tablet:
