@@ -172,6 +172,11 @@ contexts:
           captures:
               1: keyword.control.technique
 
+        # numeric constants
+
+        - match: \d+
+          scope: constant.numeric
+
         # built-in function invocation
 
         - match: '([a-z]\w*)(?=\()(?!:)'
@@ -214,8 +219,7 @@ contexts:
               2: string
               3: punctuation.definition.string.end
 
-        - match: \d+
-          scope: constant.numeric
+        - include: code-block
 
         - match: '$'
           pop: true
