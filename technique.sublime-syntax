@@ -131,8 +131,12 @@ contexts:
         - match: ','
           scope: punctuation.separator.parameters
 
-        - match: '\w+'
-          scope: entity.name.type.technique
+
+        - match: '(\[)?([A-Z]\w*)(\])?'
+          captures:
+              1: punctuation.section.brackets.start
+              2: entity.name.type.technique
+              3: punctuation.section.brackets.end
 
         - match: '\(\)'
           scope: entity.name.type.technique
