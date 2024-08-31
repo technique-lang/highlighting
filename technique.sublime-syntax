@@ -18,6 +18,9 @@ contexts:
         - match: '^!.*$'
           scope: entity.name.namespace.technique
 
+        - match: '^&.*$'
+          scope: entity.name.namespace.technique
+
         # identify a procedure definition and stack the function context
 
         - match: '^([a-z]\w*)(?=(?:\([\w\s,]+\))?\s+:)'
