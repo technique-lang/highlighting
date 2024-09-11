@@ -236,7 +236,7 @@ contexts:
 
         # an empty name is not a valid field but we want the highlighting to
         # for the rest of the tablet when writing.
-        - match: '(\")([\w\d\s]*)(\")\s*(,)'
+        - match: '(\")([\w\d\s]*)(\")\s*(=)'
           captures:
               1: punctuation.definition.field.begin
               2: variable.other.tablet
