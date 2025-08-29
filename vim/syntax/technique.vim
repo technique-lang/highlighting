@@ -1,6 +1,6 @@
 " Vim syntax file for Technique language
 " Language: Technique
-" Maintainer: [Your Name]
+" Maintainer: Andrew Cowie
 " Latest Revision: 2025
 
 if exists("b:current_syntax")
@@ -48,8 +48,9 @@ syn match techniqueSignatureArrow "->" contained
 syn match techniqueComma "," contained
 
 " Role assignments (Attributes) - anchored at start of line
-syn match techniqueAttribute "^\s*@[a-z][a-z0-9_]*\(\s*+\s*@[a-z][a-z0-9_]*\)*" contains=techniqueRole,techniqueAttributeOperator
+syn match techniqueAttribute "^\s*[@^][a-z][a-z0-9_]*\(\s*+\s*[@^][a-z][a-z0-9_]*\)*" contains=techniqueRole,techniquePlace,techniqueAttributeOperator
 syn match techniqueRole "@[a-z][a-z0-9_]*" contained
+syn match techniquePlace "[^][a-z][a-z0-9_]*" contained
 syn match techniqueAttributeOperator "+" contained
 
 " Basic structural elements - define first as they're used everywhere  

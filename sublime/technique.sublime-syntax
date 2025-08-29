@@ -62,9 +62,9 @@ contexts:
               1: keyword.operator.assignment
               2: variable.parameter.technique
 
-        - match: '^\s+(?=@\w+)'
+        - match: '^\s+(?=[@^]\w+)'
           push:
-            - role
+            - attribute
 
         # procedure title if present
 
@@ -147,9 +147,9 @@ contexts:
         - match: '->'
           scope: keyword.operator.function
 
-    role:
+    attribute:
         - meta_scope: meta.trait
-        - match: '@\w+'
+        - match: '[@^]\w+'
           scope: entity.name.trait
 
         - match: '\+'
