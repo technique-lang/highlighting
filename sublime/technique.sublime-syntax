@@ -47,7 +47,13 @@ contexts:
 
         # individual sub-steps within a procedure
 
-        - match: '^\s+([a-z]\.)'
+        - match: '^\s+([a-hj-km-uwyz]\.)'
+          captures:
+              1: markup.list.numbered.technique
+
+        # individual sub-substeps with roman numerals
+
+        - match: '^\s+([ivxl]+\.)'
           captures:
               1: markup.list.numbered.technique
 
