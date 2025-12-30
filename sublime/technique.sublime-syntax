@@ -1,7 +1,7 @@
 %YAML 1.2
 ---
 name: Technique
-file_extensions: [t]
+file_extensions: [tq]
 scope: source.technique
 
 contexts:
