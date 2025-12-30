@@ -62,7 +62,7 @@ contexts:
               1: keyword.operator.assignment
               2: variable.parameter.technique
 
-        - match: '^\s+(?=[@^]\w+)'
+        - match: '^\s+(?=[@^])'
           push:
             - attribute
 
@@ -164,6 +164,10 @@ contexts:
 
     attribute:
         - meta_scope: meta.trait
+
+        - match: '[@^]\*'
+          scope: entity.name.trait
+
         - match: '[@^]\w+'
           scope: entity.name.trait
 
