@@ -144,8 +144,23 @@ contexts:
         - match: '\(\)'
           scope: entity.name.type.technique
 
+        - match: '\('
+          scope: punctuation.definition.parameters.begin
+          push: signature-tuple
+
         - match: '->'
           scope: keyword.operator.function
+
+    signature-tuple:
+        - match: '\)'
+          scope: punctuation.definition.parameters.end
+          pop: true
+
+        - match: ','
+          scope: punctuation.separator.parameters
+
+        - match: '[A-Z]\w*'
+          scope: entity.name.type.technique
 
     attribute:
         - meta_scope: meta.trait
