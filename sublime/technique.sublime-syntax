@@ -1,7 +1,7 @@
 %YAML 1.2
 ---
 name: Technique
-file_extensions: [t]
+file_extensions: [tq]
 scope: source.technique
 
 contexts:
@@ -47,7 +47,13 @@ contexts:
 
         # individual sub-steps within a procedure
 
-        - match: '^\s+([a-z]\.)'
+        - match: '^\s+([a-hj-km-uwyz]\.)'
+          captures:
+              1: markup.list.numbered.technique
+
+        # individual sub-substeps with roman numerals
+
+        - match: '^\s+([ivxl]+\.)'
           captures:
               1: markup.list.numbered.technique
 
@@ -62,7 +68,7 @@ contexts:
               1: keyword.operator.assignment
               2: variable.parameter.technique
 
-        - match: '^\s+(?=[@^]\w+)'
+        - match: '^\s+(?=[@^])'
           push:
             - attribute
 
@@ -144,11 +150,30 @@ contexts:
         - match: '\(\)'
           scope: entity.name.type.technique
 
+        - match: '\('
+          scope: punctuation.definition.parameters.begin
+          push: signature-tuple
+
         - match: '->'
           scope: keyword.operator.function
 
+    signature-tuple:
+        - match: '\)'
+          scope: punctuation.definition.parameters.end
+          pop: true
+
+        - match: ','
+          scope: punctuation.separator.parameters
+
+        - match: '[A-Z]\w*'
+          scope: entity.name.type.technique
+
     attribute:
         - meta_scope: meta.trait
+
+        - match: '[@^]\*'
+          scope: entity.name.trait
+
         - match: '[@^]\w+'
           scope: entity.name.trait
 

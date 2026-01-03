@@ -4,6 +4,9 @@ use syntect::parsing::{ParseState, Scope, ScopeStack, SyntaxSet};
 use syntect::util::as_24_bit_terminal_escaped;
 
 fn main() -> Result<()> {
+    let args: Vec<String> = std::env::args().collect();
+    let filename = args.get(1).map(|s| s.as_str()).unwrap_or("Example.tq");
+
     let ss = SyntaxSet::load_from_folder(".")?;
 
     let syn = ss
@@ -11,12 +14,12 @@ fn main() -> Result<()> {
         .context("Syntax for Technique not found")?;
 
     // retrieve the appropriate ANSI syntax highlighting configuration
-    let theme = ThemeSet::get_theme("technique.tmTheme").expect("Theme file not found");
+    let theme = ThemeSet::get_theme("sublime/technique.tmTheme").expect("Theme file not found");
     let highlighter = Highlighter::new(&theme);
 
     let mut parser = ParseState::new(syn);
 
-    let input = std::fs::read_to_string("Example.t").context("Failed to read example Technique file")?;
+    let input = std::fs::read_to_string(filename).context("Failed to read example Technique file")?;
 
     let lines = input.lines();
 
